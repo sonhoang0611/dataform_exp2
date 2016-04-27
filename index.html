@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My Website</title>
+  <script language="javascript" src="js/angular.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="js/angular.js"></script>
+  <script src="js/controllers.js"></script>
+<link href="css/default.css" type="text/css" rel="stylesheet">
+</head>
+<body ng-controller="mywebCtrl">
+	<div class="info">
+		<div class="image">
+			<img src = "./image/son.jpg" alt="Avatar">
+		</div>
+		<div class="profile" ng-repeat="person in profile">
+			<h3 class="hoten">{{person.name}}</h3>
+			<p>{{person.job}} tại {{person.education}}</p>
+			 <p><a>{{person.country}} </a> | <a>{{person.work}}</a></p>
+			<div class="current">
+			</div>
+		</div>
+	</div>
+	
+	<div class="backgr">
+		<div class="header">
+			<p>Background</p>
+		</div>
+		 <div class="mucluc">
+			<div class="tieude">
+				<div class="icon">
+					<img src="./image/ex1.png"/>
+				</div>
+				<div class="content">
+		     			<p>Summary</p>
+				</div>
+			</div>
+			<div class="description">
+                      <p >
+                           Internet executive with over 20 years of experience, including general management of mid to large size organizations, corporate development, product development, business operations, and strategy. <br>
+                           <br>
+                           Currently CEO at LinkedIn, the web's largest and most powerful network of professionals. <br>
+                           <br>
+                           Prior to LinkedIn, was an Executive in Residence at Accel Partners and Greylock Partners. Primarily focused on advising the leadership teams of the firm's existing consumer technology portfolio companies while also working closely with the firm’s partners to evaluate new investment opportunities.<br>
+                           <br>
+                           Previously served in key leadership roles at Yahoo! for over seven years, most recently as the Executive Vice President of Yahoo!'s Network Division managing Yahoo's consumer web product portfolio, including Yahoo's Front Page, Mail, Search, and Media products.<br>
+                           <br>
+                           Specialties: general management, corporate development, product development, business operations, strategy, product marketing, non-profit governance</p>
+			<hr>
+			</div>
+		</div>
+		 
+		 <div class="mucluc">
+		     <div class="tieude">
+				<div class="icon">
+					<img src="./image/ex.png">
+				</div>
+				<div class="content">
+		     			<p>Experience</p>
+				</div>
+			</div>
+			<div class="description">
+                           <p>
+                           Connecting the world's professionals to make them more productive and successful. Since joining the company in December 2008, LinkedIn has expanded its global platform to 
+			   23 languages and more than 30 offices around the world, grown its membership base from 33M to more than 347M, and increased its revenue from $78M to over $2.2B in 2014.</p>
+			<hr>
+			</div>
+                 </div>
+		 
+		<div class="mucluc">
+			<div class="tieude">
+				<div class="icon">
+					<img src="./image/ex2.jpg"/>
+				</div>
+				<div class="content">
+		     			<p>Skill</p>
+				</div>
+			</div>
+			<div class="description">
+                      	<p></p>
+			<hr>
+			</div>
+		</div>
+		<div class="mucluc">
+			<div class="tieude">
+				<div class="icon">
+					<img src="./imageex3.jpg"/>
+				</div>
+				<div class="content">
+		     			<p>Education</p>
+				</div>
+			</div>
+			<div class="description2" ng-repeat="person in profile">
+				<div class="school">
+                      		<h3>{{person.education}}</h3>
+				<p>{{person.specialist}}</p>
+				<p>{{person.year}}</p>
+				</div>
+				<div class="logo">
+					<img src = "./image/logo.jpg" alt="logo hcmus">
+				</div>
+			</div>
+			
+		</div>
+	</div>	
+</body>
+</html>
