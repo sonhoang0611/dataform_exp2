@@ -10,21 +10,21 @@
 <link href="css/default.css" type="text/css" rel="stylesheet">
 </head>
 <body ng-controller="mywebCtrl">
-	<div class="info">
+	<div class="info" >
 		<div class="image">
 			<img src = "./image/son.jpg" alt="Avatar">
 		</div>
 		<div class="profile" ng-repeat="person in profile">
-			<div class="basic">
+			<div class="basic" >
 				<h3 class="hoten">{{person.name}}</h3>
 				<p class="chuvua">{{person.job}} tại {{person.education}}</p>
-				 <p><a>{{person.country}} </a> | <a>{{person.work}}</a></p>
+				 <p><a>{{person.country}}</a> | <a>{{person.work}}</a></p>
 			</div>
 			<div class="extra">
 				<div class="extra1">
-					<p>Current</p>
-					<p>Previous</p>
-					<p>Education</p>
+					<p><a href="#curr">Current</a></p>
+					<p><a href="#prev">Previous</a></p>
+					<p><a href="#university">Education</a></p>
 				</div>
 				<div class="extra2">
 					<p>{{person.current}}</p>
@@ -48,17 +48,18 @@
 		     			<p>Summary</p>
 				</div>
 			</div>
-			<div class="description">
-                      <p >
-                           Internet executive with over 20 years of experience, including general management of mid to large size organizations, corporate development, product development, business operations, and strategy. <br>
+			<div id="curr" class="description">
+			<p>
+			   - Thông tin cơ bản: <br>
+			   +Họ và tên: Hoàng Thái Sơn<br>
+			   +Ngày tháng năm sinh: 06/11/1995<br>
+                           +Email: hoangthaison985@gmail.com <br>
+                           +Số điện thoại: 01634837660<br>
+                           +Ngoại ngữ: Tiếng Anh.<br>
                            <br>
-                           Currently CEO at LinkedIn, the web's largest and most powerful network of professionals. <br>
-                           <br>
-                           Prior to LinkedIn, was an Executive in Residence at Accel Partners and Greylock Partners. Primarily focused on advising the leadership teams of the firm's existing consumer technology portfolio companies while also working closely with the firm’s partners to evaluate new investment opportunities.<br>
-                           <br>
-                           Previously served in key leadership roles at Yahoo! for over seven years, most recently as the Executive Vice President of Yahoo!'s Network Division managing Yahoo's consumer web product portfolio, including Yahoo's Front Page, Mail, Search, and Media products.<br>
-                           <br>
-                           Specialties: general management, corporate development, product development, business operations, strategy, product marketing, non-profit governance</p>
+			   - Hiện tại tôi là sinh viên ngành công nghệ thông tin tại trường đại học Khoa Học tự Nhiên, một trong hai trường đại học lớn nhất thành phố Hồ Chí Minh.<br>
+                           +Kinh nghiệm làm việc: Chưa có<br>
+			   +Khả năng: Tiếp thu nhanh, ham học hỏi, có chí cầu tiến không sợ thất bại.</p>
 			<hr>
 			</div>
 		</div>
@@ -68,14 +69,38 @@
 				<div class="icon">
 					<img src="./image/ex.png">
 				</div>
-				<div class="content">
+				<div id="prev" class="content">
 		     			<p>Experience</p>
 				</div>
 			</div>
+			<div   class="description">
+                         	<h4>Gia sư tiếng anh</h4>
+				<p>Tại gia
+				 <br>7/2013 - 7/2015</p>
+			 <p>- Nhận dạy kèm các em từ lớp 1 - 11 về môn tiếng anh, bảo đảm bám sát chương trình dạy trên trường/lớp hoặc có nhu cầu học thêm. 
+			   Bên cạnh đó cũng nhận kèm các bạn lớp 12 thi tốt nghiệp và đại học môn anh văn khối A1.</p>
+			<hr>
+			</div>
+                 </div>
+
+		<div class="mucluc">
+		     <div class="tieude">
+				<div class="icon">
+					<img src="./image/ex4.jpg">
+				</div>
+				<div class="content">
+		     			<p>Project</p>
+				</div>
+			</div>
 			<div class="description">
-                           <p>
-                           Connecting the world's professionals to make them more productive and successful. Since joining the company in December 2008, LinkedIn has expanded its global platform to 
-			   23 languages and more than 30 offices around the world, grown its membership base from 33M to more than 347M, and increased its revenue from $78M to over $2.2B in 2014.</p>
+                           
+                           	<h4>Các đồ án hoàn thành tốt trong học kì trước:</h4>
+			   	<p>+ MyPaint 1.2.3 - Lập trình window.<br>
+				+ Caro - Lập trình window.<br>
+				<br>
+			   	<h4> Đồ án chưa được tốt trong học kì trước:</h4>
+				<p>+ Quản lý khách sạn - Phân tích và quản lý yêu cầu phần mềm.<br>
+			  .</p>
 			<hr>
 			</div>
                  </div>
@@ -90,7 +115,7 @@
 				</div>
 			</div>
 			<div class="skill" ng-repeat="person in profile">
-				<p>+Top Skills</p>
+				<p>- Các kĩ năng:</p>
 				<span class="score">70+</span><span class="stuff">{{person.skill[0]}}</span></br>
 				<span class="score">70+</span><span class="stuff">{{person.skill[1]}}</span></br>
 				<span class="score">65</span><span class="stuff">{{person.skill[2]}}</span></br>
@@ -98,7 +123,7 @@
 				<span class="score">62</span><span class="stuff">{{person.skill[4]}}</span></br>
 				<span class="score">60</span><span class="stuff">{{person.skill[5]}}</span></br>
 				<span class="score">60</span><span class="stuff">{{person.skill[6]}}</span></br>
-				<p>+I'm also know about: </p>
+				<p>- Tôi cũng có biết về: </p>
 				<span class="score">65+</span><span class="stuff">{{person.skill[7]}}</span>	     
 				<span class="score">52</span><span class="stuff">{{person.skill[8]}}</span>
 				<span class="score">45</span><span class="stuff">{{person.skill[9]}}</span>
@@ -111,7 +136,7 @@
 				<div class="icon">
 					<img src="./image/ex3.jpg"/>
 				</div>
-				<div class="content">
+				<div id="university" class="content">
 		     			<p>Education</p>
 				</div>
 			</div>

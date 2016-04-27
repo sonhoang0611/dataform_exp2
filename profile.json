@@ -6,11 +6,11 @@
         "job": "Sinh viên",
 	  "country": "Việt Nam",
 	  "work": "Lập trình viên",
-	  "current": "Quận 12, thành phố Hồ Chí Minh", 
-	  "previous": "Huyện An Lão, Hải Phòng",
+	  "current": "Sinh viên", 
+	  "previous": "Gia sư tại gia",
 	  "education": "Trường đại học Khoa Học Tự Nhiên",
 	  "specialist": "chuyên ngành Kĩ thuật phần mềm, khoa Công nghệ thông tin",
-	  "skill": ["Ielts 5.0","C#","C/C++","Java","HTML","CSS","Javascript","Chess","Football","Singing","Judo"],
-	  "year": "2013-2017"
+         "skill": ["Ielts","C#","C/C++","Java","HTML","CSS","Javascript","Chess","Football","Singing","Judo"],
+	  "year": "2013 - 2017"
 	  	}
 ]
