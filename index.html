@@ -89,8 +89,20 @@
 		     			<p>Skill</p>
 				</div>
 			</div>
-			<div class="description">
-                      	<p></p>
+			<div class="skill" ng-repeat="person in profile">
+				<p>+Top Skills</p>
+				<span class="score">70+</span><span class="stuff">{{person.skill[0]}}</span></br>
+				<span class="score">70+</span><span class="stuff">{{person.skill[1]}}</span></br>
+				<span class="score">65</span><span class="stuff">{{person.skill[2]}}</span></br>
+				<span class="score">63</span><span class="stuff">{{person.skill[3]}}</span></br>
+				<span class="score">62</span><span class="stuff">{{person.skill[4]}}</span></br>
+				<span class="score">60</span><span class="stuff">{{person.skill[5]}}</span></br>
+				<span class="score">60</span><span class="stuff">{{person.skill[6]}}</span></br>
+				<p>+I'm also know about: </p>
+				<span class="score">65+</span><span class="stuff">{{person.skill[7]}}</span>	     
+				<span class="score">52</span><span class="stuff">{{person.skill[8]}}</span>
+				<span class="score">45</span><span class="stuff">{{person.skill[9]}}</span>
+				<span class="score">30</span><span class="stuff">{{person.skill[10]}}</span>
 			<hr>
 			</div>
 		</div>
