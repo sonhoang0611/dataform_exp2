@@ -15,10 +15,22 @@
 			<img src = "./image/son.jpg" alt="Avatar">
 		</div>
 		<div class="profile" ng-repeat="person in profile">
-			<h3 class="hoten">{{person.name}}</h3>
-			<p>{{person.job}} tại {{person.education}}</p>
-			 <p><a>{{person.country}} </a> | <a>{{person.work}}</a></p>
-			<div class="current">
+			<div class="basic">
+				<h3 class="hoten">{{person.name}}</h3>
+				<p class="chuvua">{{person.job}} tại {{person.education}}</p>
+				 <p><a>{{person.country}} </a> | <a>{{person.work}}</a></p>
+			</div>
+			<div class="extra">
+				<div class="extra1">
+					<p>Current</p>
+					<p>Previous</p>
+					<p>Education</p>
+				</div>
+				<div class="extra2">
+					<p>{{person.current}}</p>
+					<p>{{person.previous}}</p>
+					<p>{{person.education}}</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -85,7 +97,7 @@
 		<div class="mucluc">
 			<div class="tieude">
 				<div class="icon">
-					<img src="./imageex3.jpg"/>
+					<img src="./image/ex3.jpg"/>
 				</div>
 				<div class="content">
 		     			<p>Education</p>
