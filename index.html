@@ -1,13 +1,15 @@
 ﻿<!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
-  <meta charset="utf-8">
-  <title>My Website</title>
-  <script language="javascript" src="js/angular.min.js"></script>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <script src="js/angular.js"></script>
-  <script src="js/controllers.js"></script>
-<link href="css/default.css" type="text/css" rel="stylesheet">
+	<meta charset="utf-8">
+	<title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="css/editme.demo.css" media="screen">
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/angular.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/editme.demo.js"></script>
+	<script language="javascript" src="js/angular.min.js"></script>
 </head>
 <body ng-controller="mywebCtrl">
 	<div class="info" >
@@ -16,9 +18,24 @@
 		</div>
 		<div class="profile" ng-repeat="person in profile">
 			<div class="basic" >
-				<h3 class="hoten">{{person.name}}</h3>
-				<p class="chuvua">{{person.job}} tại {{person.education}}</p>
-				 <p><a>{{person.country}}</a> | <a>{{person.work}}</a></p>
+				<div >
+					
+					<h3 class="hoten">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Full Name" name="name" ng-model="person.name" ng-required="true">
+						</sk-editme>		
+					</h3>
+					<div>
+					<p class="chuvua">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Job" name="job" ng-model="person.student" ng-required="true">
+						</sk-editme>
+					</p>
+					</div>
+				</div>
+				<div>
+					<p><a>{{person.country}}</a> | <a>{{person.work}}</a></p>
+				</div>
 			</div>
 			<div class="extra">
 				<div class="extra1">
@@ -27,9 +44,21 @@
 					<p><a href="#university">Education</a></p>
 				</div>
 				<div class="extra2">
-					<p>{{person.current}}</p>
-					<p>{{person.previous}}</p>
-					<p>{{person.education}}</p>
+					<p>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Current job" name="job" ng-model="person.current" ng-required="true">
+						</sk-editme>
+					</p>
+					<p>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Previous job" name="job" ng-model="person.previous" ng-required="true">
+						</sk-editme>
+					</p>
+					<p>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Education" name="job" ng-model="person.education" ng-required="true">
+						</sk-editme>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -39,7 +68,7 @@
 		<div class="header">
 			<p>Background</p>
 		</div>
-		 <div class="mucluc">
+		 <div class="mucluc" ng-repeat="person in profile">
 			<div class="tieude">
 				<div class="icon">
 					<img src="./image/ex1.png"/>
@@ -49,22 +78,59 @@
 				</div>
 			</div>
 			<div id="curr" class="description">
-			<p>
-			   - Thông tin cơ bản: <br>
-			   +Họ và tên: Hoàng Thái Sơn<br>
-			   +Ngày tháng năm sinh: 06/11/1995<br>
-                           +Email: hoangthaison985@gmail.com <br>
-                           +Số điện thoại: 01634837660<br>
-                           +Ngoại ngữ: Tiếng Anh.<br>
-                           <br>
-			   - Hiện tại tôi là sinh viên ngành công nghệ thông tin tại trường đại học Khoa Học tự Nhiên, một trong hai trường đại học lớn nhất thành phố Hồ Chí Minh.<br>
-                           +Kinh nghiệm làm việc: Chưa có<br>
-			   +Khả năng: Tiếp thu nhanh, ham học hỏi, có chí cầu tiến không sợ thất bại.</p>
-			<hr>
-			</div>
+			<h4>Thông tin cơ bản:</h4>
+				<div class="form-group row">
+					<p class="col-md-3">+ Họ và tên: </p>
+					<div class="col-md-4">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Full name" name="myName" ng-model="person.name" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="form-group row">
+					<p class="col-md-3">+ Ngày tháng năm sinh: </p>
+					<div class="col-md-4">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Born" name="myBorn" ng-model="person.born" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="form-group row">
+					<p class="col-md-3">+ Email: </p>
+					<div class="col-md-4">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Email" name="myEmail" ng-model="person.email" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="form-group row">
+					<p class="col-md-3">+ Ngoại ngữ: </p>
+					<div class="col-md-4">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Language" name="myLanguage" ng-model="person.language" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="form-group row">
+					<p class="col-md-3">+ Kinh nghiệm làm việc: </p>
+					<div class="col-md-4">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Exp" name="myExp" ng-model="person.exp" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="form-group row">
+					<p class="col-md-3">+ Khả năng: </p>
+					<div class="col-md-4">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Ability" name="myAbility" ng-model="person.ability" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+			</div>	
 		</div>
 		 
-		 <div class="mucluc">
+		 <div class="mucluc" ng-repeat="person in profile">
 		     <div class="tieude">
 				<div class="icon">
 					<img src="./image/ex.png">
@@ -73,17 +139,30 @@
 		     			<p>Experience</p>
 				</div>
 			</div>
-			<div   class="description">
-                         	<h4>Gia sư tiếng anh</h4>
-				<p>Tại gia
-				 <br>7/2013 - 7/2015</p>
-			 <p>- Nhận dạy kèm các em từ lớp 1 - 11 về môn tiếng anh, bảo đảm bám sát chương trình dạy trên trường/lớp hoặc có nhu cầu học thêm. 
-			   Bên cạnh đó cũng nhận kèm các bạn lớp 12 thi tốt nghiệp và đại học môn anh văn khối A1.</p>
+			<div class="description">
+                    <h4>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Previous job" name="job2" ng-model="person.previous" ng-required="true">
+						</sk-editme>
+					</h4>
+					<p>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Office" name="office" ng-model="person.office" ng-required="true">
+						</sk-editme>
+					</p>
+					<p>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Period" name="period" ng-model="person.period" ng-required="true">
+						</sk-editme>
+					</p>
+						<sk-editme>
+							<textarea class="form-control" ng-model="person.description" ng-required="true"></textarea>
+						</sk-editme>
 			<hr>
 			</div>
-                 </div>
+        </div>
 
-		<div class="mucluc">
+		<div class="mucluc" ng-repeat="person in profile">
 		     <div class="tieude">
 				<div class="icon">
 					<img src="./image/ex4.jpg">
@@ -93,17 +172,27 @@
 				</div>
 			</div>
 			<div class="description">
-                           
-                           	<h4>Các đồ án hoàn thành tốt trong học kì trước:</h4>
-			   	<p>+ MyPaint 1.2.3 - Lập trình window.<br>
-				+ Caro - Lập trình window.<br>
+                <h4>Các đồ án hoàn thành tốt trong học kì trước:</h4>
+			   	<p>
+					<sk-editme>
+						<input type="text" class="form-control" placeholder="Project 1" name="proj1" ng-model="person.proj[0]" ng-required="true">
+					</sk-editme>
+				</p>
+				<p>
+					<sk-editme>
+						<input type="text" class="form-control" placeholder="Project 2" name="proj2" ng-model="person.proj[1]" ng-required="true">
+					</sk-editme>
+				</p>
 				<br>
 			   	<h4> Đồ án chưa được tốt trong học kì trước:</h4>
-				<p>+ Quản lý khách sạn - Phân tích và quản lý yêu cầu phần mềm.<br>
-			  .</p>
-			<hr>
+				<p>
+					<sk-editme>
+						<input type="text" class="form-control" placeholder="Project 3" name="proj3" ng-model="person.proj[2]" ng-required="true">
+					</sk-editme>
+				</p>
+				<hr>
 			</div>
-                 </div>
+        </div>
 		 
 		<div class="mucluc">
 			<div class="tieude">
@@ -142,9 +231,21 @@
 			</div>
 			<div class="description2" ng-repeat="person in profile">
 				<div class="school">
-                      		<h3>{{person.education}}</h3>
-				<p>{{person.specialist}}</p>
-				<p>{{person.year}}</p>
+                     <h3>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Education" name="job" ng-model="person.education" ng-required="true">
+						</sk-editme>
+					</h3>
+					<p>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Specialist" name="specialist" ng-model="person.specialist" ng-required="true">
+						</sk-editme>
+					</p>
+					<p>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Year" name="year" ng-model="person.year" ng-required="true">
+						</sk-editme>
+					</p>
 				</div>
 				<div class="logo">
 					<img src = "./image/logo.jpg" alt="logo hcmus">
