@@ -39,7 +39,6 @@ a:hover{
 }
 
 .more1{
-	
 	display: flex;
 	vertical-align: center;
 	align-items: top;
@@ -47,6 +46,7 @@ a:hover{
 }
 
 .extra>div{
+	border: 2px solid red;
 	line-height: 80%;
 	font-size:10pt;
 	display:inline-block;
@@ -74,7 +74,6 @@ a:hover{
 }
 
 .extra2{
-	
 }
 
 .backgr{
