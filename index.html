@@ -9,32 +9,46 @@
 	<script src="js/angular.js"></script>
 	<script src="js/controllers.js"></script>
 	<script src="js/editme.demo.js"></script>
-	<script language="javascript" src="js/angular.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body ng-controller="mywebCtrl">
-	<div class="info" >
+	<div class="backgroundcolor" ng-init="listskill=[]">
+	<div class="info">
 		<div class="image">
 			<img src = "./image/son.jpg" alt="Avatar">
 		</div>
 		<div class="profile" ng-repeat="person in profile">
 			<div class="basic" >
-				<div >
-					
+				
+					<div class="name">
 					<h3 class="hoten">
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Full Name" name="name" ng-model="person.name" ng-required="true">
 						</sk-editme>		
 					</h3>
-					<div>
+					</div>
+					<div class="pupil">
 					<p class="chuvua">
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Job" name="job" ng-model="person.student" ng-required="true">
 						</sk-editme>
 					</p>
 					</div>
-				</div>
-				<div>
-					<p><a>{{person.country}}</a> | <a>{{person.work}}</a></p>
+			
+				<div class="combine">
+					<div class="country">
+						<a><sk-editme>
+							<input type="text" class="form-control" placeholder="Country" name="country" ng-model="person.country" ng-required="true">
+						</sk-editme></a>
+					</div>
+					<div><p> | </p></div>
+					<div class="work">
+						<a><sk-editme>
+							<input type="text" class="form-control" placeholder="Work" name="work" ng-model="person.work" ng-required="true">
+						</sk-editme></a>
+					</div>
 				</div>
 			</div>
 			<div class="extra">
@@ -44,24 +58,31 @@
 					<p><a href="#university">Education</a></p>
 				</div>
 				<div class="extra2">
+					<div>
 					<p>
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Current job" name="job" ng-model="person.current" ng-required="true">
 						</sk-editme>
 					</p>
+					</div>
+					<div>
 					<p>
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Previous job" name="job" ng-model="person.previous" ng-required="true">
 						</sk-editme>
 					</p>
+					</div>
+					<div>
 					<p>
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Education" name="job" ng-model="person.education" ng-required="true">
 						</sk-editme>
 					</p>
+					</div>
 				</div>
 			</div>
 		</div>
+		
 	</div>
 	
 	<div class="backgr">
@@ -127,9 +148,10 @@
 						</sk-editme>
 					</div>
 				</div>
+				<hr>
 			</div>	
 		</div>
-		 
+		
 		 <div class="mucluc" ng-repeat="person in profile">
 		     <div class="tieude">
 				<div class="icon">
@@ -138,7 +160,9 @@
 				<div id="prev" class="content">
 		     			<p>Experience</p>
 				</div>
+				
 			</div>
+			
 			<div class="description">
                     <h4>
 						<sk-editme>
@@ -158,6 +182,7 @@
 						<sk-editme>
 							<textarea class="form-control" ng-model="person.description" ng-required="true"></textarea>
 						</sk-editme>
+					
 			<hr>
 			</div>
         </div>
@@ -202,8 +227,38 @@
 				<div class="content">
 		     			<p>Skill</p>
 				</div>
+				<div class="add">
+		     			<button class="btn btn-default" data-toggle="modal" data-target="#modalSkill">Add Skill</button>
+				</div>				
 			</div>
-			<div class="skill" ng-repeat="person in profile">
+			
+			
+			
+			<div>
+				<!-- Modal -->
+				<div class="modal fade" id="modalSkill" role="dialog">
+					<div class="modal-dialog modal-sm">
+    
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<label>Skill:</label><br>
+							<input type="text" class="form-control" placeholder="Skill" ng-model="name"><br>
+							<label>Score:</label><br>
+							<input type="text" class="form-control" placeholder="Score" ng-model="score">
+						</div>
+						<div class="modal-footer">
+							<button ng-click="add()" class="btn btn-primary" data-dismiss="modal">Save</button>
+							<button class="btn btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+					
+					</div>
+				</div>
+			</div>
+				
+				<div class="skill" ng-repeat="person in profile">
 				<p>- Các kĩ năng:</p>
 				<span class="score">70+</span><span class="stuff">{{person.skill[0]}}</span></br>
 				<span class="score">70+</span><span class="stuff">{{person.skill[1]}}</span></br>
@@ -212,14 +267,19 @@
 				<span class="score">62</span><span class="stuff">{{person.skill[4]}}</span></br>
 				<span class="score">60</span><span class="stuff">{{person.skill[5]}}</span></br>
 				<span class="score">60</span><span class="stuff">{{person.skill[6]}}</span></br>
+				<div ng-repeat="skill in listskill">
+				<span class="score">{{skill.score}}</span><span class="stuff">{{skill.name}}</span></br>
+				</div>
 				<p>- Tôi cũng có biết về: </p>
 				<span class="score">65+</span><span class="stuff">{{person.skill[7]}}</span>	     
 				<span class="score">52</span><span class="stuff">{{person.skill[8]}}</span>
 				<span class="score">45</span><span class="stuff">{{person.skill[9]}}</span>
 				<span class="score">30</span><span class="stuff">{{person.skill[10]}}</span>
+				</div>
+					
 			<hr>
 			</div>
-		</div>
+			
 		<div class="mucluc">
 			<div class="tieude">
 				<div class="icon">
@@ -254,5 +314,6 @@
 			
 		</div>
 	</div>	
+	</div>
 </body>
 </html>
