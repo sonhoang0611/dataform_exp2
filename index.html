@@ -43,7 +43,7 @@
 							<input type="text" class="form-control" placeholder="Country" name="country" ng-model="person.country" ng-required="true">
 						</sk-editme></a>
 					</div>
-					<div><p> | </p></div>
+					<div><p>|&nbsp;&nbsp;&nbsp;&nbsp; </p></div>
 					<div class="work">
 						<a><sk-editme>
 							<input type="text" class="form-control" placeholder="Work" name="work" ng-model="person.work" ng-required="true">
@@ -58,21 +58,21 @@
 					<p><a href="#university">Education</a></p>
 				</div>
 				<div class="extra2">
-					<div>
+					<div class="component">
 					<p>
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Current job" name="job" ng-model="person.current" ng-required="true">
 						</sk-editme>
 					</p>
 					</div>
-					<div>
+					<div class="component">
 					<p>
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Previous job" name="job" ng-model="person.previous" ng-required="true">
 						</sk-editme>
 					</p>
 					</div>
-					<div>
+					<div  class="component">
 					<p>
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Education" name="job" ng-model="person.education" ng-required="true">
@@ -387,21 +387,156 @@
 				
 				<div class="skill" ng-repeat="person in profile">
 				<p>- Các kĩ năng:</p>
-				<span class="score">70+</span><span class="stuff">{{person.skill[0]}}</span></br>
-				<span class="score">70+</span><span class="stuff">{{person.skill[1]}}</span></br>
-				<span class="score">65</span><span class="stuff">{{person.skill[2]}}</span></br>
-				<span class="score">63</span><span class="stuff">{{person.skill[3]}}</span></br>
-				<span class="score">62</span><span class="stuff">{{person.skill[4]}}</span></br>
-				<span class="score">60</span><span class="stuff">{{person.skill[5]}}</span></br>
-				<span class="score">60</span><span class="stuff">{{person.skill[6]}}</span></br>
-				<div ng-repeat="skill in listSkill">
-				<span class="score">{{skill.score}}</span><span class="stuff">{{skill.name}}</span></br>
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 1" name="score1" ng-model="person.score[0]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 1" name="skill1" ng-model="person.skill[0]" ng-required="true">
+						</sk-editme>
+					</div>
 				</div>
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 2" name="score2" ng-model="person.score[1]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 2" name="skill2" ng-model="person.skill[1]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="eachRow">
+					<div class="score">
+						
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 3" name="score3" ng-model="person.score[2]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 3" name="skill3" ng-model="person.skill[2]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 4" name="score4" ng-model="person.score[3]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 4" name="skill4" ng-model="person.skill[3]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 5" name="score5" ng-model="person.score[4]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 5" name="skill5" ng-model="person.skill[4]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 6" name="score6" ng-model="person.score[5]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 6" name="skill6" ng-model="person.skill[5]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 7" name="score7" ng-model="person.score[6]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 7" name="skill7" ng-model="person.skill[6]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div ng-repeat="skill in listSkill">
+					<div class="eachRow">
+						<div class="score">
+							<sk-editme>
+								<input type="text" class="form-control" placeholder="Score" ng-model="skill.score" ng-required="true">
+							</sk-editme>
+						</div>
+						<div class="stuff">
+							<sk-editme>
+								<input type="text" class="form-control" placeholder="Skill" ng-model="skill.name" ng-required="true">
+							</sk-editme>
+						</div>
+				</div>
+				</div>
+				
 				<p>- Tôi cũng có biết về: </p>
-				<span class="score">65+</span><span class="stuff">{{person.skill[7]}}</span>	     
-				<span class="score">52</span><span class="stuff">{{person.skill[8]}}</span>
-				<span class="score">45</span><span class="stuff">{{person.skill[9]}}</span>
-				<span class="score">30</span><span class="stuff">{{person.skill[10]}}</span>
+				<div class="extraRow">
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 8" name="score10" ng-model="person.score[7]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 8" name="skill10" ng-model="person.skill[7]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 9" name="score10" ng-model="person.score[8]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 9" name="skill10" ng-model="person.skill[8]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 10" name="score10" ng-model="person.score[9]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 10" name="skill10" ng-model="person.skill[9]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				<div class="eachRow">
+					<div class="score">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Score 11" name="score10" ng-model="person.score[10]" ng-required="true">
+						</sk-editme>
+					</div>
+					<div class="stuff">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Skill 11" name="skill10" ng-model="person.skill[10]" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
 				</div>
 					
 			<hr>
