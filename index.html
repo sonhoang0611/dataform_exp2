@@ -10,11 +10,11 @@
 	<script src="js/controllers.js"></script>
 	<script src="js/editme.demo.js"></script>
 	<script src="js/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </head>
 <body ng-controller="mywebCtrl">
-	<div class="backgroundcolor" ng-init="listskill=[]">
+	<div class="backgroundcolor">
 	<div class="info">
 		<div class="image">
 			<img src = "./image/son.jpg" alt="Avatar">
@@ -85,11 +85,13 @@
 		
 	</div>
 	
-	<div class="backgr">
+	<div class="backgr" >
 		<div class="header">
 			<p>Background</p>
 		</div>
-		 <div class="mucluc" ng-repeat="person in profile">
+		
+		<!-- Mục summary -->
+		 <div class="mucluc" ng-init="listSum=[]">
 			<div class="tieude">
 				<div class="icon">
 					<img src="./image/ex1.png"/>
@@ -97,11 +99,39 @@
 				<div class="content">
 		     			<p>Summary</p>
 				</div>
+				<div class="add">
+		     			<button class="btn btn-default" data-toggle="modal" data-target="#modalSum">+Add Summary</button>
+				</div>	
 			</div>
-			<div id="curr" class="description">
+			
+			<div>
+				<!-- Modal -->
+				<div class="modal fade" id="modalSum" role="dialog">
+					<div class="modal-dialog modal-ld">
+    
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<label>Label:</label><br>
+							<input type="text" class="form-control" placeholder="Label" ng-model="label"><br>
+							<label>Information:</label><br>
+							<textarea class="form-control" row="4" placeholder="Information" ng-model="information"></textarea><br>
+						</div>
+						<div class="modal-footer">
+							<button ng-click="addSum()" class="btn btn-primary" data-dismiss="modal">Save</button>
+							<button class="btn btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+					
+					</div>
+				</div>
+			</div>
+			
+			<div id="curr" class="description" ng-repeat="person in profile">
 			<h4>Thông tin cơ bản:</h4>
 				<div class="form-group row">
-					<p class="col-md-3">+ Họ và tên: </p>
+					<p class="col-md-3">Họ và tên: </p>
 					<div class="col-md-4">
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Full name" name="myName" ng-model="person.name" ng-required="true">
@@ -109,7 +139,7 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<p class="col-md-3">+ Ngày tháng năm sinh: </p>
+					<p class="col-md-3">Ngày tháng năm sinh: </p>
 					<div class="col-md-4">
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Born" name="myBorn" ng-model="person.born" ng-required="true">
@@ -117,7 +147,7 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<p class="col-md-3">+ Email: </p>
+					<p class="col-md-3">Email: </p>
 					<div class="col-md-4">
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Email" name="myEmail" ng-model="person.email" ng-required="true">
@@ -125,7 +155,7 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<p class="col-md-3">+ Ngoại ngữ: </p>
+					<p class="col-md-3">Ngoại ngữ: </p>
 					<div class="col-md-4">
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Language" name="myLanguage" ng-model="person.language" ng-required="true">
@@ -133,7 +163,7 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<p class="col-md-3">+ Kinh nghiệm làm việc: </p>
+					<p class="col-md-3">Kinh nghiệm làm việc: </p>
 					<div class="col-md-4">
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Exp" name="myExp" ng-model="person.exp" ng-required="true">
@@ -141,18 +171,29 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<p class="col-md-3">+ Khả năng: </p>
+					<p class="col-md-3">Điểm mạnh: </p>
 					<div class="col-md-4">
 						<sk-editme>
-							<input type="text" class="form-control" placeholder="Ability" name="myAbility" ng-model="person.ability" ng-required="true">
+							<input type="text" class="form-control" placeholder="Advantages" name="myAbility" ng-model="person.ability" ng-required="true">
 						</sk-editme>
 					</div>
 				</div>
+				
+				<div class="form-group row" ng-repeat="sum in listSum">
+					<p class="col-md-3">{{sum.label}}</p>
+					<div class="col-md-4">
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Information" name="information" ng-model="sum.information" ng-required="true">
+						</sk-editme>
+					</div>
+				</div>
+				
 				<hr>
 			</div>	
 		</div>
 		
-		 <div class="mucluc" ng-repeat="person in profile">
+		<!-- Mục Experience -->
+		<div class="mucluc" ng-init="listExp=[]">
 		     <div class="tieude">
 				<div class="icon">
 					<img src="./image/ex.png">
@@ -160,10 +201,41 @@
 				<div id="prev" class="content">
 		     			<p>Experience</p>
 				</div>
-				
+				<div class="add">
+		     			<button class="btn btn-default" data-toggle="modal" data-target="#modalExp">+Add Experience</button>
+				</div>	
 			</div>
 			
-			<div class="description">
+			<div>
+				<!-- Modal -->
+				<div class="modal fade" id="modalExp" role="dialog">
+					<div class="modal-dialog modal-ld">
+    
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<label>Title:</label><br>
+							<input type="text" class="form-control" placeholder="Title" ng-model="title"><br>
+							<label>Location:</label><br>
+							<input type="text" class="form-control" placeholder="Location" ng-model="location1"><br>
+							<label>Period:</label><br>
+							<input type="text" class="form-control" placeholder="Period" ng-model="period"><br>
+							<label>Description:</label><br>
+							<textarea class="form-control" row="4" placeholder="Description" ng-model="description"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button ng-click="addExp()" class="btn btn-primary" data-dismiss="modal">Save</button>
+							<button class="btn btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+					
+					</div>
+				</div>
+			</div>
+			
+			<div class="description" ng-repeat="person in profile">
+				<div>
                     <h4>
 						<sk-editme>
 							<input type="text" class="form-control" placeholder="Previous job" name="job2" ng-model="person.previous" ng-required="true">
@@ -171,7 +243,7 @@
 					</h4>
 					<p>
 						<sk-editme>
-							<input type="text" class="form-control" placeholder="Office" name="office" ng-model="person.office" ng-required="true">
+							<input type="text" class="form-control" placeholder="Location" name="office" ng-model="person.office" ng-required="true">
 						</sk-editme>
 					</p>
 					<p>
@@ -182,12 +254,35 @@
 						<sk-editme>
 							<textarea class="form-control" ng-model="person.description" ng-required="true"></textarea>
 						</sk-editme>
+					<hr>
+				</div>	
 					
-			<hr>
+				<div ng-repeat="exp in listExp">
+					<h4>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Job" name="title" ng-model="exp.title" ng-required="true">
+						</sk-editme>
+					</h4>
+					<p>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Location" name="location1" ng-model="exp.location1" ng-required="true">
+						</sk-editme>
+					</p>
+					<p>
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Period" name="period1" ng-model="exp.period" ng-required="true">
+						</sk-editme>
+					</p>
+						<sk-editme>
+							<textarea class="form-control" ng-model="exp.description" ng-required="true"></textarea>
+						</sk-editme>
+					<hr>
+				</div>
 			</div>
         </div>
 
-		<div class="mucluc" ng-repeat="person in profile">
+		<!-- Mục project -->
+		<div class="mucluc" ng-init="listProj=[]">
 		     <div class="tieude">
 				<div class="icon">
 					<img src="./image/ex4.jpg">
@@ -195,9 +290,35 @@
 				<div class="content">
 		     			<p>Project</p>
 				</div>
+				<div class="add">
+		     			<button class="btn btn-default" data-toggle="modal" data-target="#modalProj">+Add Project</button>
+				</div>	
 			</div>
-			<div class="description">
-                <h4>Các đồ án hoàn thành tốt trong học kì trước:</h4>
+			
+			<div>
+				<!-- Modal -->
+				<div class="modal fade" id="modalProj" role="dialog">
+					<div class="modal-dialog modal-ld">
+    
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<label>Project:</label><br>
+							<input type="text" class="form-control" placeholder="Project" ng-model="proj"><br>
+						</div>
+						<div class="modal-footer">
+							<button ng-click="addProj()" class="btn btn-primary" data-dismiss="modal">Save</button>
+							<button class="btn btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+					
+					</div>
+				</div>
+			</div>
+			
+			<div class="description" ng-repeat="person in profile">
+                <h4>Các đồ án yêu thích trong các học kì trước:</h4>
 			   	<p>
 					<sk-editme>
 						<input type="text" class="form-control" placeholder="Project 1" name="proj1" ng-model="person.proj[0]" ng-required="true">
@@ -208,18 +329,24 @@
 						<input type="text" class="form-control" placeholder="Project 2" name="proj2" ng-model="person.proj[1]" ng-required="true">
 					</sk-editme>
 				</p>
-				<br>
-			   	<h4> Đồ án chưa được tốt trong học kì trước:</h4>
 				<p>
 					<sk-editme>
 						<input type="text" class="form-control" placeholder="Project 3" name="proj3" ng-model="person.proj[2]" ng-required="true">
 					</sk-editme>
 				</p>
+				<div ng-repeat="pro in listProj">
+					<p>					
+						<sk-editme>
+							<input type="text" class="form-control" placeholder="Project" name="proj" ng-model="pro.proj" ng-required="true">
+						</sk-editme>
+					</p>
+				</div>
 				<hr>
 			</div>
         </div>
 		 
-		<div class="mucluc">
+		 <!-- Mục skill -->
+		<div class="mucluc" ng-init="listSkill=[]">
 			<div class="tieude">
 				<div class="icon">
 					<img src="./image/ex2.jpg"/>
@@ -228,7 +355,7 @@
 		     			<p>Skill</p>
 				</div>
 				<div class="add">
-		     			<button class="btn btn-default" data-toggle="modal" data-target="#modalSkill">Add Skill</button>
+		     			<button class="btn btn-default" data-toggle="modal" data-target="#modalSkill">+Add Skill</button>
 				</div>				
 			</div>
 			
@@ -249,7 +376,7 @@
 							<input type="text" class="form-control" placeholder="Score" ng-model="score">
 						</div>
 						<div class="modal-footer">
-							<button ng-click="add()" class="btn btn-primary" data-dismiss="modal">Save</button>
+							<button ng-click="addSkill()" class="btn btn-primary" data-dismiss="modal">Save</button>
 							<button class="btn btn-default" data-dismiss="modal">Cancel</button>
 						</div>
 					</div>
@@ -267,7 +394,7 @@
 				<span class="score">62</span><span class="stuff">{{person.skill[4]}}</span></br>
 				<span class="score">60</span><span class="stuff">{{person.skill[5]}}</span></br>
 				<span class="score">60</span><span class="stuff">{{person.skill[6]}}</span></br>
-				<div ng-repeat="skill in listskill">
+				<div ng-repeat="skill in listSkill">
 				<span class="score">{{skill.score}}</span><span class="stuff">{{skill.name}}</span></br>
 				</div>
 				<p>- Tôi cũng có biết về: </p>
@@ -280,7 +407,8 @@
 			<hr>
 			</div>
 			
-		<div class="mucluc">
+		<!-- Mục education -->
+		<div class="mucluc" ng-init="listSchool=[]">
 			<div class="tieude">
 				<div class="icon">
 					<img src="./image/ex3.jpg"/>
@@ -288,7 +416,37 @@
 				<div id="university" class="content">
 		     			<p>Education</p>
 				</div>
+				<div class="add">
+		     			<button class="btn btn-default" data-toggle="modal" data-target="#modalSchool">+Add School</button>
+				</div>		
 			</div>
+			
+			<div>
+				<!-- Modal -->
+				<div class="modal fade" id="modalSchool" role="dialog">
+					<div class="modal-dialog modal-ld">
+    
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<label>School:</label><br>
+							<input type="text" class="form-control" placeholder="School" ng-model="school"><br>
+							<label>Field of study:</label><br>
+							<input type="text" class="form-control" placeholder="Field of study" ng-model="field"><br>
+							<label>Year:</label><br>
+							<input type="text" class="form-control" placeholder="Year" ng-model="year"><br>
+						</div>
+						<div class="modal-footer">
+							<button ng-click="addSchool()" class="btn btn-primary" data-dismiss="modal">Save</button>
+							<button class="btn btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+					
+					</div>
+				</div>
+			</div>
+			
 			<div class="description2" ng-repeat="person in profile">
 				<div class="school">
                      <h3>
@@ -306,6 +464,27 @@
 							<input type="text" class="form-control" placeholder="Year" name="year" ng-model="person.year" ng-required="true">
 						</sk-editme>
 					</p>
+					
+					<div ng-repeat="edu in listSchool">
+						<hr>
+						<h3>
+							<sk-editme>
+								<input type="text" class="form-control" placeholder="School" name="school" ng-model="edu.school" ng-required="true">
+							</sk-editme>
+						</h3>
+						<p>
+							<sk-editme>
+								<input type="text" class="form-control" placeholder="Field of study" name="field" ng-model="edu.field" ng-required="true">
+							</sk-editme>
+						</p>
+						<p>
+							<sk-editme>
+								<input type="text" class="form-control" placeholder="Year" name="year3" ng-model="edu.year" ng-required="true">
+							</sk-editme>
+						</p>
+						
+					</div>
+					
 				</div>
 				<div class="logo">
 					<img src = "./image/logo.jpg" alt="logo hcmus">

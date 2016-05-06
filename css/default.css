@@ -114,10 +114,18 @@ hr {
 }
 
 .tieude{
+	
 	display: flex;
 	vertical-align: center;
 	align-items: top;
 	justify-content: left;
+}
+
+.tieude .add{
+	display: flex;
+	align-items: center;	
+	margin-left: auto;
+	
 }
 
 .icon{
@@ -125,12 +133,7 @@ hr {
 }
 
 .tieude>div{
-	
 	display:inline-block;
-}
-
-.add{
-margin-left: auto;
 }
 
 .content{	
