@@ -1,0 +1,138 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Find flights, book ticket">
+    <title>Search flights</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.date.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.time.css">
+    <?php include 'FlightApp/v1/index.php';?>
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <header id="header">
+            <img id="icon" src="images/logo.png">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="flightDetails.html">Flight Details</a></li>
+                    <li><a href="passenger.html">Passengers</a></li>
+                    <li><a href="#">Flight Setting</a>
+						<ul class="subMenu">
+      						<li><a href="#">Add Flight</a></li>
+      						<li><a href="#">Edit Flight</a></li>
+      						<li><a href="#">Delete Flight</a></li>
+      					</ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <article id="mainBooking">
+        </article>
+        <article id="whereToGo"  ng-app="mainApp" ng-controller="mainCtrl">
+            <p>Where To Go</p>
+            <div ng-repeat="place in places">
+                <place class="eachPlace" where="place"></place>
+            </div>
+        </article>
+        <aside id="formSearchFlight">
+            <div id="flightType">
+                <input type="radio" name="flightType" value="Return" id="return" checked>
+                <label for="return">Return</label>
+                <input type="radio" name="flightType" value="One way" id="oneWay">
+                <label for="oneWay">One way</label>
+            </div>
+            <div id="destination">
+                <div>
+                    <label>From</label>
+                    <br>
+                    <input type="text" placeholder="City" id="departureFlights">
+                    <p id="abc"></p>
+                </div>
+                <div>
+                    <label>To</label>
+                    <br>
+                    <input type="text" placeholder="City">
+                </div>
+            </div>
+            <div id="schedule">
+                <div>
+                    <label>Depart</label>
+                    <br>
+                    <input type="text" class="datePicker">
+                </div>
+                <div id="returnDay">
+                    <label>Return</label>
+                    <br>
+                    <input type="text" class="datePicker">
+                </div>
+                <div>
+                    <label>Adult</label>
+                    <br>
+                    <select name="adult">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Child</label>
+                    <br>
+                    <select name="child">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Class</label>
+                    <br>
+                    <select name="class">
+                        <option value="Economy">Economy (Y)</option>
+                        <option value="First Class">First Class (C)</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <a href="findFlight.html"><input type="button" id="searchFlight" value="Search Flight"></a>
+            </div>
+        </aside>
+        <article id="followUs">
+            <p>Follow Us</p>
+            <p>
+                <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
+                <a href="#"><i class="fa fa-pinterest-p fa-2x"></i></a>
+                <a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
+            </p>
+        </article>
+        <article id="review" ng-app="mainApp2" ng-controller="mainCtrl2">
+            <p>What our customers say</p>
+            <div ng-repeat="customer in customers">
+                <customer class="eachCustomer" cus="customer"></customer>
+            </div>
+        </article>
+    </main>
+    <script type="text/javascript" src="js/controller.js"></script>  
+    <script type="text/javascript" src="js/place.js"></script> 
+    <script type="text/javascript" src="js/customer.js"></script>
+    <script type="text/javascript" src="js/legacy.js"></script>
+    <script type="text/javascript" src="js/picker.js"></script>
+    <script type="text/javascript" src="js/picker.date.js"></script>
+    <script type="text/javascript" src="js/picker.time.js"></script>
+    <script type="text/javascript" src="js/datePicker.js"></script>
+</body>
+
+</html>
