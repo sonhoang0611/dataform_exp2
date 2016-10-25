@@ -11,7 +11,6 @@ body {
 }
 
 a {
-
 	text-decoration: none;
 }
 
@@ -190,7 +189,7 @@ article {
 }
 
 #guestInfo > div {
-    width: 45%;
+    width: 48%;
 	display: inline-block;
 	vertical-align: top;
 }

@@ -2,13 +2,6 @@
 var app = angular.module('mainApp', ['ngRoute']);
 app.config(function($routeProvider) {
         $routeProvider
-
-            // route for the home page
-            .when('/home', {
-                templateUrl : 'homepage.html'
-
-            })
-
             // route for the about page
             .when('/flightdetails', {
                 templateUrl : 'flightdetails.html'
@@ -32,7 +25,6 @@ app.config(function($routeProvider) {
             .when('/availableflights', {
                 templateUrl : 'findFlight.html'
             })
-            .otherwise({ redirectTo: '/home' });
     });
 
 $(document).ready(function() {
@@ -42,10 +34,7 @@ $(document).ready(function() {
         dataType: 'json', // Notice! JSONP <-- P (lowercase)
         success: function(data) {
 
-            /* $("#departureFlights").append("<option value='" + data.departureFlights[0].airplanename + "\'>");
-             $("#departureFlights").append("<option value='" + data.departureFlights[1].airplanename + "\'>");
-             $("#departureFlights").append("<option value='" + data.departureFlights[2].airplanename + "\'>");*/
-
+           
             $.each(data.departureFlights, function(index) {
                 $('#departureFlights').append("<option value='" + data.departureFlights[index].airplanename + " - " + data.departureFlights[index].airplanecode + "\'>");
             });
@@ -60,16 +49,13 @@ $(document).ready(function() {
     $('#departFlights').on('blur', function() {
         var string = $(this).val().split(" ");
         var code = string[string.length - 1];
-        alert("success");
         $.ajax({
             type: 'GET',
             url: "http://localhost/FlightApp/v1/destinationFlights/" + code,
             dataType: 'json', // Notice! JSONP <-- P (lowercase)
             success: function(data) {
 
-                /* $("#departureFlights").append("<option value='" + data.departureFlights[0].airplanename + "\'>");
-                 $("#departureFlights").append("<option value='" + data.departureFlights[1].airplanename + "\'>");
-                 $("#departureFlights").append("<option value='" + data.departureFlights[2].airplanename + "\'>");*/
+                
                 $("#destinationFlights").html("");
                 $.each(data.desFlights, function(index) {
                     $('#destinationFlights').append("<option value='" + data.desFlights[index].airplanename + " - " + data.desFlights[index].destination + "\'>");
@@ -92,12 +78,10 @@ $(document).ready(function() {
             url: "http://localhost/FlightApp/v1/flights/" + code1 + "/" + code2 + "/" + $("#departDay").val() + "/" + $("#quantity option:selected").text(),
             dataType: 'json', // Notice! JSONP <-- P (lowercase)
             success: function(data) {
-
-                alert("success");
-                $('#tableFindFlight').html("").append("<tr><th>Date<\/th><th>Departure<\/th><th><\/th><th>Destination<\/th><th>Class<\/th><th>PriceTag<\/th><th>PriceTicket<\/th><th>Action<\/th><\/tr>");
+                $('#tableFindFlight').html("").append("<tr><th>Date<\/th><th>FlightCode<\/th><th>Departure<\/th><th><\/th><th>Destination<\/th><th>Class<\/th><th>PriceTag<\/th><th>PriceTicket<\/th><th>Action<\/th><\/tr>");
                 $.each(data.availableFlights, function(index){
                    
-                     $('#tableFindFlight').append("<tr><td>" + data.availableFlights[index].departday + "<\/td><td>"  + data.availableFlights[index].departure + "<\/td><td><i class='fa fa-long-arrow-right fa-4x'><\/i><\/td><td>" + data.availableFlights[index].destination + "<\/td><td>"  + data.availableFlights[index].class + "<\/td><td>" + data.availableFlights[index].pricetag + "<\/td><td>"  + data.availableFlights[index].priceticket + "<\/td><td><a href='#/guestInfo'><input type='button' class='selectFlight' value='Select'><\/a><\/td><\/tr>");
+                     $('#tableFindFlight').append("<tr class='flight" + index + "'><td>" + data.availableFlights[index].departday + "<\/td><td>"  + data.availableFlights[index].flightcode + "<\/td><td>"  + data.availableFlights[index].departure + "<\/td><td><i class='fa fa-long-arrow-right fa-4x'><\/i><\/td><td>" + data.availableFlights[index].destination + "<\/td><td>"  + data.availableFlights[index].class + "<\/td><td>" + data.availableFlights[index].pricetag + "<\/td><td>"  + data.availableFlights[index].priceticket + "<\/td><td><input type='button' class='selectFlight' value='Select'><\/td><\/tr>");
                 });
 
             },
@@ -106,6 +90,24 @@ $(document).ready(function() {
             }
         });
     });
+
+  /*   $('body').on('click',"tr[class^='flight'] td input", function() {
+        var className = $(this).closest('tr').attr('class');
+        var flightcode = $("tr[class=" + className + "] td:nth-child(2)").text();
+        alert(flightcode);
+        data
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/FlightApp/v1/flightdetails",
+           dataType: 'json', // Notice! JSONP <-- P (lowercase)
+            success: function(data) {
+              alert("check new flight details");
+            },
+            error: function() {
+                alert("fail");
+            }
+        });
+    });*/
 
     $('input:radio[name="flightType"]').on("change",
         function() {
