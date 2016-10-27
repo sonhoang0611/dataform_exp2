@@ -3,6 +3,8 @@
 require_once '../include/DbOperation.php';
 require '../libs/Slim/Slim.php';
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Origin");
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
@@ -38,6 +40,23 @@ $app->get('/destinationFlights/:departure', function($departure) use ($app){
     echoResponse(200,$response);
 });
 
+$app->get('/details/:bookingcode', function($bookingcode) use ($app){
+    $db = new DbOperation();
+    $result = $db->getFlightDetails($bookingcode);
+    $response = array();
+    $response['flightDetails'] = array();
+    while($row = $result->fetch_assoc()){
+        $temp = array();
+        $temp['bookcode']= $row['bookcode'];
+        $temp['planecode']= $row['planecode'];
+        $temp['dayflight']= $row['dayflight'];
+        $temp['flightclass']= $row['flightclass'];
+        $temp['flightprice']= $row['flightprice'];
+        array_push($response['flightDetails'],$temp);
+    }
+    echoResponse(200,$response);
+});
+
 
 $app->get('/flights/:departure/:destination/:departday/:quantity', function ($departure,$destination,$departday,$quantity) use ($app) {
     $db = new DbOperation();
@@ -57,7 +76,6 @@ $app->get('/flights/:departure/:destination/:departday/:quantity', function ($de
             $temp['priceticket'] = $row['priceticket'];
             array_push($response['availableFlights'],$temp);
         }
-        $res = $db->createBookingCode();
        
     } else {
         $response['message'] = "Can't find eauivalent flights";
@@ -65,15 +83,18 @@ $app->get('/flights/:departure/:destination/:departday/:quantity', function ($de
     echoResponse(200, $response);
 });
 
-/*$app->post('/flightdetails', function () use ($app) {
+$app->post('/booking', function () use ($app) {
     $response = array();
-    $flightcode = $app->request->post('flightcode');
-    $departday = $app->request->post('departday');
-    $class = $app->request->post('class');
-    $pricetag = $app->request->post('pricetag');
     $db = new DbOperation();
-    $bookingcode = $db->getBookingCode();
-    $res = $db->createFlightdetails($bookingcode,$flightcode, $departday, $class, $pricetag);
+    $bookingcode = $app->request->post('bookcode');
+    $flightcode = $app->request->post('planecode');
+    $departday = $app->request->post('dayflight');
+    $class = $app->request->post('flightclass');
+    $pricetag = $app->request->post('flightprice');
+   
+    $code = $db->createBookingCode($bookingcode);
+    $res = $db->createNewFlightDetails($bookingcode,$flightcode, $departday, $class, $pricetag);
+    
     if ($res == 0) {
         $response["error"] = false;
         $response["message"] = "Successfully added flight details";
@@ -83,7 +104,33 @@ $app->get('/flights/:departure/:destination/:departday/:quantity', function ($de
         $response["message"] = "Failed to add flight details";
         echoResponse(200, $response);
     }
-});*/
+});
+
+$app->post('/customers', function () use ($app) {
+    $response = array();
+    $db = new DbOperation();
+    $customercode = $app->request->post('customercode');
+    $title = $app->request->post('title');
+    $lastname = $app->request->post('lastname');
+    $firstname = $app->request->post('firstname');
+    $email = $app->request->post('email');
+    $phone = $app->request->post('phone');
+   
+    $res = $db->createNewCustomers($customercode, $title, $lastname, $firstname, $email, $phone);
+    
+    if ($res == 0) {
+        $response["error"] = false;
+        $response["message"] = "Successfully added customers";
+        echoResponse(201, $response);
+    } else if ($res == 1) {
+        $response["error"] = true;
+        $response["message"] = "Failed to add customers";
+        echoResponse(200, $response);
+    }
+});
+
+
+
 
 function echoResponse($status_code, $response)
 {

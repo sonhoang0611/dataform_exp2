@@ -3,7 +3,7 @@ var app = angular.module('mainApp', ['ngRoute']);
 app.config(function($routeProvider) {
         $routeProvider
             // route for the about page
-            .when('/flightdetails', {
+            .when('/flightdetail', {
                 templateUrl : 'flightdetails.html'
 
             })
@@ -79,9 +79,8 @@ $(document).ready(function() {
             dataType: 'json', // Notice! JSONP <-- P (lowercase)
             success: function(data) {
                 $('#tableFindFlight').html("").append("<tr><th>Date<\/th><th>FlightCode<\/th><th>Departure<\/th><th><\/th><th>Destination<\/th><th>Class<\/th><th>PriceTag<\/th><th>PriceTicket<\/th><th>Action<\/th><\/tr>");
-                $.each(data.availableFlights, function(index){
-                   
-                     $('#tableFindFlight').append("<tr class='flight" + index + "'><td>" + data.availableFlights[index].departday + "<\/td><td>"  + data.availableFlights[index].flightcode + "<\/td><td>"  + data.availableFlights[index].departure + "<\/td><td><i class='fa fa-long-arrow-right fa-4x'><\/i><\/td><td>" + data.availableFlights[index].destination + "<\/td><td>"  + data.availableFlights[index].class + "<\/td><td>" + data.availableFlights[index].pricetag + "<\/td><td>"  + data.availableFlights[index].priceticket + "<\/td><td><input type='button' class='selectFlight' value='Select'><\/td><\/tr>");
+                $.each(data.availableFlights, function(index){                  
+                     $('#tableFindFlight').append("<tr class='flight" + index + "'><td>" + data.availableFlights[index].departday + "<\/td><td>"  + data.availableFlights[index].flightcode + "<\/td><td>"  + data.availableFlights[index].departure + "<\/td><td><i class='fa fa-long-arrow-right fa-4x'><\/i><\/td><td>" + data.availableFlights[index].destination + "<\/td><td>"  + data.availableFlights[index].class + "<\/td><td>" + data.availableFlights[index].pricetag + "<\/td><td>"  + data.availableFlights[index].priceticket + "<\/td><td><a href='#/guestInfo'><input type='button' class='selectFlight' value='Select'><\/a><\/td><\/tr>");
                 });
 
             },
@@ -91,15 +90,70 @@ $(document).ready(function() {
         });
     });
 
-  /*   $('body').on('click',"tr[class^='flight'] td input", function() {
-        var className = $(this).closest('tr').attr('class');
-        var flightcode = $("tr[class=" + className + "] td:nth-child(2)").text();
-        alert(flightcode);
-        data
+    $('body').on('click','#btnSearchCode', function() {
+        var code = $("#searchCode input:nth-child(1)").val();
+        var url = "http://localhost/FlightApp/v1/details/" + code;
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: 'json', // Notice! JSONP <-- P (lowercase)
+            success: function(data) {
+                $('#FindFlightDetails').html("").append("<tr><th>Booking Code<\/th><th>Flight Code<\/th><th>Depart Day<\/th><th>Class<\/th><th>PriceTag<\/th><\/tr>");                  
+                $('#FindFlightDetails').append("<tr><td>" + data.flightDetails[0].bookcode + "<\/td><td>"  + data.flightDetails[0].planecode + "<\/td><td>"  + data.flightDetails[0].dayflight + "<\/td><td>" + data.flightDetails[0].flightclass + "<\/td><td>"  + data.flightDetails[0].flightprice + "<\/td><\/tr>");
+            },
+            error: function() {
+                alert("fail");
+            }
+        });
+    });
+
+     $('body').on('click','#addCustomer', function() {
+        var customercode = createRandomCustomerCode();
+        var title = $("#cusTitle").val();
+        var lastname = $("#cusLastname").val();
+        var firstname = $("#cusFirstname").val();
+        var email = $("#cusEmail").val();
+        var phone = $("#cusPhone").val();
+        var data = {};
+        data.customercode = customercode;
+        data.title = title;
+        data.lastname = lastname;
+        data.firstname = firstname;
+        data.email = email;
+        data.phone = phone;
+        var url = "http://localhost/FlightApp/v1/customers";
         $.ajax({
             type: 'POST',
-            url: "http://localhost/FlightApp/v1/flightdetails",
-           dataType: 'json', // Notice! JSONP <-- P (lowercase)
+            url: url,
+            dataType: 'json', // Notice! JSONP <-- P (lowercase)
+            success: function(data) {
+                alert("success");
+            },
+            error: function() {
+                alert("fail");
+            }
+        });
+    });
+
+     $('body').on('click',"tr[class^='flight'] td input", function(){
+        var className = $(this).closest('tr').attr('class');
+        var flightcode = $("tr[class=" + className + "] td:nth-child(2)").text();
+        var departday = $("tr[class=" + className + "] td:nth-child(1)").text();
+        var flightclass = $("tr[class=" + className + "] td:nth-child(6)").text();
+        var pricetag = $("tr[class=" + className + "] td:nth-child(7)").text();
+        var data={};
+
+        data.bookcode = createRandomBookingCode();
+        data.planecode = flightcode;
+        data.dayflight = departday;
+        data.flightclass = flightclass;
+        data.flightprice = pricetag;
+
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost/FlightApp/v1/booking",
+            data: data,
+            dataType: 'json', // Notice! JSONP <-- P (lowercase)
             success: function(data) {
               alert("check new flight details");
             },
@@ -107,7 +161,7 @@ $(document).ready(function() {
                 alert("fail");
             }
         });
-    });*/
+    });
 
     $('input:radio[name="flightType"]').on("change",
         function() {
@@ -119,59 +173,24 @@ $(document).ready(function() {
         });
 });
 
+function createRandomBookingCode()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+    for( var i=0; i < 6; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-/*app.controller('mainCtrl', function($scope) {
-    $scope.places = [{
-        icon: 'images/Hochiminh.jpg',
-        name: 'HCM, Vietnam',
-        description: 'Roma (tiếng Ý: Roma; tiếng Latinh: Rōma; còn gọi Rôma hay La Mã trong tiếng Việt) là thủ đô của nước Ý.',
-        price: '199'
-    }, {
-        icon: 'images/Madrid.jpg',
-        name: 'Madrid, Spain',
-        description: 'Roma (tiếng Ý: Roma; tiếng Latinh: Rōma; còn gọi Rôma hay La Mã trong tiếng Việt) là thủ đô của nước Ý.',
-        price: '199'
-    }, {
-        icon: 'images/Paris.jpg',
-        name: 'Paris, France',
-        description: 'Roma (tiếng Ý: Roma; tiếng Latinh: Rōma; còn gọi Rôma hay La Mã trong tiếng Việt) là thủ đô của nước Ý.',
-        price: '199'
-    }, {
-        icon: 'images/London.jpg',
-        name: 'London, England',
-        description: 'Roma (tiếng Ý: Roma; tiếng Latinh: Rōma; còn gọi Rôma hay La Mã trong tiếng Việt) là thủ đô của nước Ý.',
-        price: '199'
-    }, {
-        icon: 'images/Roma.jpg',
-        name: 'Roma, Italia',
-        description: 'Roma (tiếng Ý: Roma; tiếng Latinh: Rōma; còn gọi Rôma hay La Mã trong tiếng Việt) là thủ đô của nước Ý.',
-        price: '199'
-    }, {
-        icon: 'images/Tokyo.jpg',
-        name: 'Tokyo, Japan',
-        description: 'Roma (tiếng Ý: Roma; tiếng Latinh: Rōma; còn gọi Rôma hay La Mã trong tiếng Việt) là thủ đô của nước Ý.',
-        price: '199'
-    }];
-});
+    return text;
+}
 
-var app2 = angular.module('mainApp2', []);
+function createRandomCustomerCode()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-app2.controller('mainCtrl2', function($scope) {
-    $scope.customers = [{
-        avatar: 'images/son.jpg',
-        name: 'Hoang Thai Son',
-        review: 'Good service. The staff are always nice and help me all the time.'
-    }, {
-        avatar: 'images/Kaka.jpg',
-        name: 'Ricardo Kaka',
-        review: 'The seats are comfortable and the meals are very delicious.'
-    }, {
-        avatar: 'images/quynh.jpg',
-        name: 'Nguyen Van Quynh',
-        review: 'Flight on time and safe. The drinks are tasty and well prepared.'
-    }];
-});
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-angular.element(document).ready(function() { angular.bootstrap(document.getElementById("review"), ['mainApp2']); });
-*/
+    return text;
+}

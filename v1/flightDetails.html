@@ -1,60 +1,11 @@
-
-        <header class="header2">
-            <img src="images/logo.png">
-            <nav>
-                 <ul>
-                    <li><a href="#/home">Home</a></li>
-                    <li><a href="#/flightdetails">Flight Details</a></li>
-                    <li><a href="#/passengers">Passengers</a></li>
-                    <li><a href="#">Flight Setting</a>
-                        <ul class="subMenu">
-                            <li><a href="#">Add Flight</a></li>
-                            <li><a href="#">Edit Flight</a></li>
-                            <li><a href="#">Delete Flight</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <article class="formSelectFlight2">
+       <article class="formSelectFlight2" id="abc">
             <p>Flight Details</p>
-            <table>
-                <tr>
-                    <th>Booking Code</th>
-                    <th>Flight Code</th>
-                    <th>Date</th>
-                    <th>Class</th>
-                    <th>Ticket Price</th>
-                    <th>Action</th>
-                </tr>
-                <tr>
-                    <td>ABCXYZ</td>
-                    <td>BL326</td>
-                    <td>16/10/2016</td>
-                    <td>Y</td>
-                    <td>E</td>
-                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
-                </tr>
-                <tr>
-                    <td>ABCXYZ</td>
-                    <td>BL327</td>
-                    <td>17/10/2016</td>
-                    <td>Y</td>
-                    <td>E</td>
-                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
-                </tr>
-                <tr>
-                    <td>ABCXYZ</td>
-                    <td>BL328</td>
-                    <td>18/10/2016</td>
-                    <td>Y</td>
-                    <td>E</td>
-                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
-                </tr>
+            <div id="searchCode">
+                <input type='text' placeholder="Enter your bookcode">
+                <input type='button' class='selectFlight' value="Search" id="btnSearchCode">
+            </div>
+            <table id="FindFlightDetails">
+               
             </table>
         </article>
-        <!-- <article id="formAddBookingList">
-            <p>Add new</p>
-            <label></label>
-            <input type="button" class="selectFlight" value="Add">
-        </article> -->
+       

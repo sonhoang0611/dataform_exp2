@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/classic.time.css">
     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"> 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    
+    <?php include 'index.php'?>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>   
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
@@ -25,7 +25,7 @@
             <nav>
                 <ul>
                     <li><a href="#/home">Home</a></li>
-                    <li><a href="#/flightdetails">Flight Details</a></li>
+                    <li><a href="#/flightdetail" id="abc">Flight Details</a></li>
                     <li><a href="#/passengers">Passengers</a></li>
                    
                 </ul>
@@ -33,13 +33,7 @@
         </header>
         <article id="mainBooking">
            </article>
-       <!--  </article>
-       <article id="whereToGo" ng-app="mainApp" ng-controller="mainCtrl">
-           <p>Where To Go</p>
-           <div ng-repeat="place in places">
-               <place class="eachPlace" where="place"></place>
-           </div>
-       </article> -->
+
         <form id="formSearchFlight">
             <div id="flightType">
                 <input type="radio" name="flightType" value="Return" id="return" checked>
@@ -99,22 +93,6 @@
             </div>
         </form>
 
-       <!--  <article id="followUs">
-           <p>Follow Us</p>
-           <p>
-               <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
-               <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
-               <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
-               <a href="#"><i class="fa fa-pinterest-p fa-2x"></i></a>
-               <a href="#"><i class="fa fa-google-plus fa-2x"></i></a>
-           </p>
-       </article>
-       <article id="review" ng-app="mainApp2" ng-controller="mainCtrl2">
-           <p>What our customers say</p>
-           <div ng-repeat="customer in customers">
-               <customer class="eachCustomer" cus="customer"></customer>
-           </div>
-       </article> -->
         <div ng-view></div>
     </main>
     

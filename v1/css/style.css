@@ -154,12 +154,20 @@ article {
 	width: 100%;
 }
 
-#formSelectFlight table th, #formSelectFlight table td {
+#formSelectFlight table th, #formSelectFlight table td, .formSelectFlight2 table td  {
 	padding: 20px;
 }
 
 #formSelectFlight table tr:nth-child(even), .formSelectFlight2 table tr:nth-child(even) {
 	background-color: #dddddd;
+}
+
+.formSelectFlight2 #searchCode {
+    margin: 30px auto;
+}
+
+#searchCode input {
+    padding: 15px;
 }
 
 .selectFlight {
