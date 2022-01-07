@@ -1,0 +1,81 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Find flights, book ticket">
+    <title>Find flights</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.date.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.time.css">
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <header class="header2">
+            <img id="icon" src="images/logo.png">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="flightDetails.html">Flight Details</a></li>
+                    <li><a href="passenger.html">Passengers</a></li>     
+                    <li><a href="#">Flight Setting</a>
+                        <ul class="subMenu">
+                            <li><a href="#">Add Flight</a></li>
+                            <li><a href="#">Edit Flight</a></li>
+                            <li><a href="#">Delete Flight</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <article id="guestInfo">
+            <p>Guest information</p>
+            <div>
+                <img src="images/avatar.jpg">
+            </div>
+            <div class="input">
+                <div>
+                    <div>
+                        <label>Title</label>
+                        <br>
+                        <select name="title">
+                            <option value="Mr">Mr</option>
+                            <option value="Ms">Ms</option>
+                            <option value="Mrs">Mrs</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>First Name</label>
+                        <br>
+                        <input type="text">
+                    </div>
+                    <div>
+                        <label>Last Name</label>
+                        <br>
+                        <input type="text">
+                    </div>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <br>
+                    <input type="text">
+                </div>
+                <div>
+                    <label>Phone</label>
+                    <br>
+                    <input type="text">
+                </div>
+                <div>
+                    <input type="button" class="selectFlight" value="Complete"></td>
+                </div>
+            </div>
+        </article>
+    </main>
+</body>
+
+</html>
