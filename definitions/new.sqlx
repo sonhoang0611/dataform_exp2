@@ -1,0 +1,7 @@
+config {
+  type: "view"
+}
+
+select
+  1237876asfasf
+  -- read more about ref() in the documentation tab --

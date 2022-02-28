@@ -1,0 +1,81 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Find flights, book ticket">
+    <title>Find flights</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.date.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.time.css">
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <header class="header2">
+            <img id="icon" src="images/logo.png">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="flightDetails.html">Flight Details</a></li>
+                    <li><a href="passenger.html">Passengers</a></li>
+                    <li><a href="#">Flight Setting</a>
+                        <ul class="subMenu">
+                            <li><a href="#">Add Flight</a></li>
+                            <li><a href="#">Edit Flight</a></li>
+                            <li><a href="#">Delete Flight</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <article id="formSelectFlight">
+            <p>Flight Details</p>
+            <table>
+                <tr>
+                    <th>Booking Code</th>
+                    <th>Flight Code</th>
+                    <th>Date</th>
+                    <th>Class</th>
+                    <th>Ticket Price</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>ABCXYZ</td>
+                    <td>BL326</td>
+                    <td>16/10/2016</td>
+                    <td>Y</td>
+                    <td>E</td>
+                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>ABCXYZ</td>
+                    <td>BL327</td>
+                    <td>17/10/2016</td>
+                    <td>Y</td>
+                    <td>E</td>
+                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                </tr>
+                <tr>
+                    <td>ABCXYZ</td>
+                    <td>BL328</td>
+                    <td>18/10/2016</td>
+                    <td>Y</td>
+                    <td>E</td>
+                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                </tr>
+            </table>
+        </article>
+        <!-- <article id="formAddBookingList">
+            <p>Add new</p>
+            <label></label>
+            <input type="button" class="selectFlight" value="Add">
+        </article> -->
+    </main>
+</body>
+
+</html>
