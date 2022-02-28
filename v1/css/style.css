@@ -1,0 +1,395 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1em;
+    font-family: "Comic Sans MS", "Trebuchet MS", "Century Gothic", sans-serif;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+.subMenu {
+	display: none;
+	position: absolute;
+}
+
+header nav ul>li:hover .subMenu {
+	 display: block;
+     position:absolute;
+     left:0px;
+     width:100%;
+     padding-left:0px;
+}
+
+header {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: absolute;
+    height: 55px;
+    font-weight: bolder;
+    z-index: 99;
+}
+
+.header2 {
+	width: 100%;
+	background-color: #55266C;
+	position: initial;
+}
+
+header > * {
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+}
+
+header nav {
+    float: right;
+}
+
+header img {
+    margin-left: 10px;
+}
+
+header nav ul>li {
+	position: relative;
+    display: inline-block;
+    list-style-type: none;
+    width: 150px;
+    text-align: center;
+}
+
+
+header nav ul li a {
+    color: #D1D9DE;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    color: #4E9EED;
+}
+
+#mainBooking {
+    height: 100vh;
+    background-image: url("../images/background1.jpg") ;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+article {
+    padding: 30px;
+}
+
+#followUs {
+    text-align: center;
+    background-image: url("../images/follow-background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-top: 1px solid white;
+    clear: both;
+    padding: 30px;
+}
+
+#followUs p:nth-child(1) {
+    text-transform: uppercase;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+#followUs p:nth-child(2) {
+    padding-bottom: 30px;
+}
+
+#followUs a > i {
+    color: black;
+    margin-right: 10px;
+    display: inline-block;
+    border: 3px solid #BA9043;
+    width: 60px;
+    line-height: 55px;
+    border-radius: 50%;
+}
+
+#followUs a > i:hover {
+    color: black;
+    background-color: #BA9043;
+}
+
+#formSearchFlight {
+    width: 70%;
+    padding: 15px;
+    position: absolute;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bolder;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    z-index: 98;
+}
+
+#formSelectFlight, #guestInfo, .formSelectFlight2 {
+	width: 70%;
+	margin: 0 auto;
+    padding: 20px;
+    background: white;
+}
+
+#formSelectFlight table, .formSelectFlight2 table {
+	text-align: center;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#formSelectFlight table th, #formSelectFlight table td, .formSelectFlight2 table td  {
+	padding: 20px;
+}
+
+#formSelectFlight table tr:nth-child(even), .formSelectFlight2 table tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+.formSelectFlight2 #searchCode {
+    margin: 30px auto;
+}
+
+#searchCode input {
+    padding: 15px;
+}
+
+.selectFlight {
+	text-transform: uppercase;
+    position: relative;
+    padding: 7px 20px;
+    border: 2px solid #7B4397;
+    color: #7B4397;
+    cursor: pointer;
+}
+
+.selectFlight:hover{
+	 background-color: #7B4397;
+	 color: white;
+}
+
+.selectFlight:active {
+    top: 1px;
+}
+
+#formSelectFlight p:nth-child(1), #guestInfo p:nth-child(1), .formSelectFlight2 p:nth-child(1){
+	padding-bottom: 30px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 2em;
+	color: #55266C;
+}
+
+#guestInfo > div {
+    width: 48%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#guestInfo .input > div {
+	margin-top: 30px;
+}
+
+#guestInfo .input > div > div {
+	display: inline-block;
+	margin-right: 30px;
+}
+
+.input input, select {
+	width: 90%;
+	padding: 10px;
+}
+
+#formSearchFlight > div {
+    margin-bottom: 25px;
+    width: calc(100% - 30px);
+    width: -moz-calc(100% - 30px);
+}
+
+#destination > div {
+    width: 50%;
+    float: left;
+}
+
+#destination > div input {
+    width: 90%;
+    padding: 10px 45px;
+    font-weight: bold;
+    font-size: 1.3em;
+    background-image: url("../images/location-before.png");
+    background-origin: content-box;
+    background-position: -35px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#destination > div input:focus, #destination > div input:active{
+    background-image: url("../images/location-after.png");
+    color: #4E9EED;
+}
+
+#schedule > div {
+    width: 25%;
+    float: left;
+}
+
+#schedule:after,
+#destination:after {
+    clear: both;
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+}
+
+#schedule > div select {
+    width: 60%;
+    padding: 5px;
+}
+
+#schedule div:last-child select {
+    width: 80%;
+}
+
+#schedule > div input {
+    width: 80%;
+    padding: 5px;
+}
+
+#searchFlight {  
+    position: relative;
+    width: 25%;
+    margin-left: 35%;
+    padding: 5px;
+    font-size: 1.3em;
+    background-color: #4E9EED;
+    border: 1px solid #4E9EED;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 6px 0px #156785;
+    border-radius: 5px;
+}
+
+#searchFlight:active {
+    top: 1px;
+}
+
+#whereToGo {
+    padding: 50px 30px;
+    /*width: 90%;
+	margin: 0 auto;*/
+    color: #f3f3f3;
+    background-color: #1F1D1D;
+}
+
+#whereToGo:after {
+    clear: both;
+    content: "";
+    display: block;
+    width: 0px;
+    height: 0px;
+    margin-bottom: 30px;
+}
+
+#whereToGo p:nth-child(1),
+#review p:nth-child(1) {
+    font-weight: lighter;
+    font-size: 2.5em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.eachPlace {
+    width: 48%;
+    height: 350px;
+    padding: 30px 50px 45px 105px;
+    float: left;
+}
+
+.eachPlace > div {
+    width: 50%;
+    height: 100%;
+    float: left;
+    /*background-color: #EBEFF0;*/
+    overflow: hidden;
+}
+
+.placeIcon {
+    border-radius: 5% 0% 0% 5%;
+}
+
+.description {
+    border-radius: 0% 5% 5% 0%;
+}
+
+.eachPlace div:nth-child(2) {
+    padding: 20px;
+}
+
+.eachPlace > div img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+}
+
+#review {
+    padding: 50px 30px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+#review:after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0px;
+    height: 0px;
+}
+
+.eachCustomer {
+    width: 33%;
+    float: left;
+}
+
+.eachCustomer > div {
+    padding: 30px 50px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.eachCustomer .info {
+    padding: 15px 100px 0px 100px;
+}
+
+.eachCustomer > div img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 50%;
+}
+
+.hideElement {
+	visibility: hidden;
+}
+
+#oneWay:checked #return{
+	visibility: hidden;
+}
+

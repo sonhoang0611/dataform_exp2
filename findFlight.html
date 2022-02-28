@@ -1,0 +1,113 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Find flights, book ticket">
+    <title>Find flights</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.date.css">
+    <link rel="stylesheet" type="text/css" href="css/classic.time.css">
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <header class="header2">
+            <img id="icon" src="images/logo.png">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="flightDetails.html">Flight Details</a></li>
+                    <li><a href="#">Passengers</a></li>
+                    <li><a href="#">Flight Setting</a>
+                        <ul class="subMenu">
+                            <li><a href="#">Add Flight</a></li>
+                            <li><a href="#">Edit Flight</a></li>
+                            <li><a href="#">Delete Flight</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <article id="formSelectFlight">
+            <p>Choose your flight</p>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Start/Departure</th>
+                    <th></th>
+                    <th>End/Return</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>16/10/2016</td>
+                    <td>
+                        <h3>11:00am</h3>
+                        <p>TP Hồ Chí Minh</p>
+                    </td>
+                    <td><i class="fa fa-long-arrow-right fa-4x"></i></td>
+                    <td>
+                        <h3>12:45pm</h3>
+                        <p>Hà Nội</p>
+                    </td>
+                    <td>
+                        <a href="guestInfo.html">
+                            <input type="button" class="selectFlight" value="Select">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>17/10/2016</td>
+                    <td>
+                        <h3>07:05pm</h3>
+                        <p>Nha Trang</p>
+                    </td>
+                    <td><i class="fa fa-long-arrow-right fa-4x"></i></td>
+                    <td>
+                        <h3>08:50pm</h3>
+                        <p>Quãng Ngãi</p>
+                    </td>
+                    <td>
+                        <input type="button" class="selectFlight" value="Select">
+                    </td>
+                </tr>
+                <tr>
+                    <td>18/10/2016</td>
+                    <td>
+                        <h3>09:10am</h3>
+                        <p>Đồng Nai</p>
+                    </td>
+                    <td><i class="fa fa-long-arrow-right fa-4x"></i></td>
+                    <td>
+                        <h3>10:50am</h3>
+                        <p>Hải Phòng</p>
+                    </td>
+                    <td>
+                        <input type="button" class="selectFlight" value="Select">
+                    </td>
+                </tr>
+                <tr>
+                    <td>16/10/2016</td>
+                    <td>
+                        <h3>04:40pm</h3>
+                        <p>Phan Thiết</p>
+                    </td>
+                    <td><i class="fa fa-long-arrow-right fa-4x"></i></td>
+                    <td>
+                        <h3>05:20pm</h3>
+                        <p>Đà Nẵng</p>
+                    </td>
+                    <td>
+                        <input type="button" class="selectFlight" value="Select">
+                    </td>
+                </tr>
+            </table>
+        </article>
+    </main>
+</body>
+
+</html>
